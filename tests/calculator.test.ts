@@ -1,7 +1,7 @@
 import { calculate } from '../src/calculator';
 
 
-describe('String calculator TDD kata', () => {
+describe('Main calculator Functionality', () => {
   test('input "" should return 0', () => {
     expect(calculate("")).toBe(0);
   });
@@ -20,6 +20,18 @@ describe('String calculator TDD kata', () => {
 
   test('input "1,2" should return 3' , () => {
     expect(calculate("1,2")).toBe(3);
+  });
+
+  test('input "10,20" should return 30' , () => {
+    expect(calculate("10,20")).toBe(30);
+  });
+
+  test('input "123,456" should return 30' , () => {
+    expect(calculate("123,456")).toBe(579);
+  });
+
+  test('input "1,456,90,1000000000" should return 30' , () => {
+    expect(calculate("1,456,90,1000000000")).toBe(1000000547);
   });
 });
 
