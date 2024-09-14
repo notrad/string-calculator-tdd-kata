@@ -74,8 +74,16 @@ describe('Main calculator Functionality', () => {
     expect(calculate("/")).toBe(NaN);
   });
 
-  test("negative numbers not allowed -1" , () => {
+  test('input "-1" should return negative numbers not allowed -1' , () => {
     expect(() => calculate("-1")).toThrow("negative numbers not allowed -1");
+  });
+
+  test('input "-1,-2" should return negative numbers not allowed -1,-2' , () => {
+    expect(() => calculate("-1,-2")).toThrow("negative numbers not allowed -1,-2");
+  });
+
+  test('input "-1,2,-3" should return negative numbers not allowed -1,-3' , () => {
+    expect(() => calculate("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
   });
 });
 
