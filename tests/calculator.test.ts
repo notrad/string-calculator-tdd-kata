@@ -58,7 +58,7 @@ describe('Main calculator Functionality', () => {
     expect(calculate("1\n2,3\n4")).toBe(10);
   });
 
-  test('input "//;\n1;2" where the delimiter is ";" should return 3' , () => {
+  test('input "//;\\n1;2" where the delimiter is ";" should return 3' , () => {
     expect(calculate("//;\n1;2")).toBe(3);
   });
 });
