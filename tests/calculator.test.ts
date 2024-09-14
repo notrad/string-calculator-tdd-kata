@@ -49,5 +49,9 @@ describe('Main calculator Functionality', () => {
   test('input " ,asdf, ,a" should return 0' , () => {
     expect(calculate(" ,asdf, ,a")).toBe(NaN);
   });
+
+  test('input "1\\n2,3" should return 6' , () => {
+    expect(calculate("1\n2,3")).toBe(6);
+  });
 });
 
