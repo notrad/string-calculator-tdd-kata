@@ -26,7 +26,7 @@ describe('Main calculator Functionality', () => {
     expect(calculate("10,20")).toBe(30);
   });
 
-  test('input "123,456" should return 30' , () => {
+  test('input "123,456" should return 579' , () => {
     expect(calculate("123,456")).toBe(579);
   });
 
