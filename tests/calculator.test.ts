@@ -41,5 +41,13 @@ describe('Main calculator Functionality', () => {
   test('input " , , , " should return 0' , () => {
     expect(calculate(" , , , ")).toBe(0);
   });
+
+  test('input " , , ,a" should return 0' , () => {
+    expect(calculate(" , , ,a")).toBe(NaN);
+  });
+
+  test('input " ,asdf, ,a" should return 0' , () => {
+    expect(calculate(" ,asdf, ,a")).toBe(NaN);
+  });
 });
 
