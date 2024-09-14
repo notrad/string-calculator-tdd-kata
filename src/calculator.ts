@@ -1,3 +1,5 @@
 export function calculate(numbers: string): number {
-    return Number(numbers);
+    let sum = 0;
+    numbers.split(",").forEach((character: string) => sum += Number(character));
+    return sum;
 }
