@@ -30,7 +30,7 @@ describe('Main calculator Functionality', () => {
     expect(calculate("123,456")).toBe(579);
   });
 
-  test('input "1,456,90,1000000000" should return 30' , () => {
+  test('input "1,456,90,1000000000" should return 1000000547' , () => {
     expect(calculate("1,456,90,1000000000")).toBe(1000000547);
   });
 
