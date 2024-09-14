@@ -33,5 +33,13 @@ describe('Main calculator Functionality', () => {
   test('input "1,456,90,1000000000" should return 30' , () => {
     expect(calculate("1,456,90,1000000000")).toBe(1000000547);
   });
+
+  test('input ",,," should return 0' , () => {
+    expect(calculate(",,,")).toBe(0);
+  });
+
+  test('input " , , , " should return 0' , () => {
+    expect(calculate(" , , , ")).toBe(0);
+  });
 });
 
