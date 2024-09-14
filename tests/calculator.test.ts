@@ -13,5 +13,9 @@ describe('String calculator TDD kata', () => {
   test('input "1" should return 1' , () => {
     expect(calculate("1")).toBe(1);
   });
+
+  test('input "2" should return 2' , () => {
+    expect(calculate("2")).toBe(2);
+  });
 });
 
