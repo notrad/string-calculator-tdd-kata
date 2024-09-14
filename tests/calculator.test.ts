@@ -53,5 +53,9 @@ describe('Main calculator Functionality', () => {
   test('input "1\\n2,3" should return 6' , () => {
     expect(calculate("1\n2,3")).toBe(6);
   });
+
+  test('input "1\\n2,3\\n4" should return 10' , () => {
+    expect(calculate("1\n2,3\n4")).toBe(10);
+  });
 });
 
