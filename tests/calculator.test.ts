@@ -31,7 +31,7 @@ describe('Main calculator Functionality', () => {
   });
 
   test('input "1,456,90,1000000000" should return 1000000547' , () => {
-    expect(calculate("1,456,90,1000000000")).toBe(1000000547);
+    expect(calculate("1,456,90,1000000000")).toBe(547);
   });
 
   test('input ",,," should return 0' , () => {
@@ -84,6 +84,10 @@ describe('Main calculator Functionality', () => {
 
   test('input "-1,2,-3" should return negative numbers not allowed -1,-3' , () => {
     expect(() => calculate("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
+  });
+
+  test('Numbers bigger than 1000 should be ignored' , () => {
+    expect(calculate("2,1000")).toBe(2);
   });
 });
 
