@@ -73,5 +73,9 @@ describe('Main calculator Functionality', () => {
   test('input "/" where the input is an non-numeric character should return NaN' , () => {
     expect(calculate("/")).toBe(NaN);
   });
+
+  test("negative numbers not allowed -1" , () => {
+    expect(() => calculate("-1")).toThrow("negative numbers not allowed -1");
+  });
 });
 
