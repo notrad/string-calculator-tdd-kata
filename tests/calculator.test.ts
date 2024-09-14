@@ -42,11 +42,11 @@ describe('Main calculator Functionality', () => {
     expect(calculate(" , , , ")).toBe(0);
   });
 
-  test('input " , , ,a" should return 0' , () => {
+  test('input " , , ,a" should return NaN' , () => {
     expect(calculate(" , , ,a")).toBe(NaN);
   });
 
-  test('input " ,asdf, ,a" should return 0' , () => {
+  test('input " ,asdf, ,a" should return NaN' , () => {
     expect(calculate(" ,asdf, ,a")).toBe(NaN);
   });
 
