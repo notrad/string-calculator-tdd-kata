@@ -61,5 +61,17 @@ describe('Main calculator Functionality', () => {
   test('input "//;\\n1;2" where the delimiter is ";" should return 3' , () => {
     expect(calculate("//;\n1;2")).toBe(3);
   });
+
+  test('input "//;" where the delimiter is ";" but the string is empty should return 0' , () => {
+    expect(calculate("//;")).toBe(0);
+  });
+
+  test('input "//" where the delimiter is "" but the string is empty should return 0' , () => {
+    expect(calculate("//")).toBe(0);
+  });
+
+  test('input "/" where the input is an non-numeric character should return NaN' , () => {
+    expect(calculate("/")).toBe(NaN);
+  });
 });
 
