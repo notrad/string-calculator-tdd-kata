@@ -1,23 +1,31 @@
 export function calculate(numbers: string): number {
-    let delimiter: string = ",";
+    let singleDelimiter: string = ",";
+    let multipleDelimiters: string[] = [];
     let negativeNumbers: number[] = [];
     let parsedNumbers: number[] = [];
-    let indexOfOpeningBracket: number = 0;
     let indexOfClosingBracket: number = 0;
+    const delimiterRegex = /\[(.*?)\]/g;
 
     if (numbers.startsWith("//")) {
         if (numbers.charAt(2) !== "[") {
-            delimiter = numbers.charAt(2);
+            singleDelimiter = numbers.charAt(2);
             numbers = numbers.slice(2);
         } else {
-            indexOfOpeningBracket = numbers.indexOf("[") + 1;
-            indexOfClosingBracket = numbers.indexOf("]");
-            delimiter = numbers.slice(indexOfOpeningBracket, indexOfClosingBracket);
-            numbers = numbers.slice(indexOfClosingBracket + 1);
+            multipleDelimiters = [...numbers.matchAll(delimiterRegex)].map(match => match[1]);
+            indexOfClosingBracket = numbers.lastIndexOf("]") + 1;
+            numbers = numbers.slice(indexOfClosingBracket);
         }
     }
 
-    parsedNumbers = numbers.replace(/["\n"]/g, delimiter).split(delimiter).map(Number).filter((number:number) => number < 1000 || Number.isNaN(number));
+
+    if (multipleDelimiters.length > 0) {
+        multipleDelimiters.forEach((delimiter: string) => {
+            numbers = numbers.replace(new RegExp(delimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), singleDelimiter);
+        });
+    }
+
+    parsedNumbers = numbers.replace(/["\n"]/g, singleDelimiter).split(singleDelimiter).map(Number).filter((number:number) => number < 1000 || Number.isNaN(number));
+
 
     negativeNumbers = parsedNumbers.filter((number:number) => number < 0);
 
