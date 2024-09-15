@@ -61,6 +61,10 @@ describe('\nMain Functionality', () => {
   test('Numbers bigger than 1000 should be ignored' , () => {
     expect(calculate("2,1000")).toBe(2);
   });
+
+  test('input "//[***]\\n1***2***3" should return 6' , () => {
+    expect(calculate("//[***]\n1***2***3")).toBe(6);
+  });
 });
 
 
@@ -81,11 +85,15 @@ describe('\nEdge cases',() => {
     expect(calculate(" ,asdf, ,a")).toBe(NaN);
   });
 
+  test('input "1\\n2,\\n3" should return 6' , () => {
+    expect(calculate("1\n2,\n3")).toBe(6);
+  });
+
   test('input "//;" where the delimiter is ";" but the string is empty should return 0' , () => {
     expect(calculate("//;")).toBe(0);
   });
 
-  test('input "//" where the delimiter is "" but the string is empty should return 0' , () => {
+  test('input "//" where the delimiter is "" and the string is empty should return 0' , () => {
     expect(calculate("//")).toBe(0);
   });
 
