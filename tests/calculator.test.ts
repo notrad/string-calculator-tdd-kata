@@ -65,6 +65,10 @@ describe('\nMain Functionality', () => {
   test('input "//[***]\\n1***2***3" should return 6' , () => {
     expect(calculate("//[***]\n1***2***3")).toBe(6);
   });
+
+  test('input "//[*][%]\n1*2%3" should return 6' , () => {
+    expect(calculate("//[*][%]\n1*2%3")).toBe(6);
+  });
 });
 
 
