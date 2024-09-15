@@ -1,7 +1,7 @@
 import { calculate } from '../src/calculator';
 
 
-describe('Main calculator Functionality', () => {
+describe('\nMain Functionality', () => {
   test('input "" should return 0', () => {
     expect(calculate("")).toBe(0);
   });
@@ -30,10 +30,41 @@ describe('Main calculator Functionality', () => {
     expect(calculate("123,456")).toBe(579);
   });
 
-  test('input "1,456,90,1000000000" should return 1000000547' , () => {
+  test('input "1,456,90,1000000000" should return 547' , () => {
     expect(calculate("1,456,90,1000000000")).toBe(547);
   });
 
+  test('input "1\\n2,3" should return 6' , () => {
+    expect(calculate("1\n2,3")).toBe(6);
+  });
+
+  test('input "1\\n2,3\\n4" should return 10' , () => {
+    expect(calculate("1\n2,3\n4")).toBe(10);
+  });
+
+  test('input "//;\\n1;2" where the delimiter is ";" should return 3' , () => {
+    expect(calculate("//;\n1;2")).toBe(3);
+  });
+
+  test('input "-1" should return "negative numbers not allowed -1"' , () => {
+    expect(() => calculate("-1")).toThrow("negative numbers not allowed -1");
+  });
+
+  test('input "-1,-2" should return "negative numbers not allowed -1,-2"' , () => {
+    expect(() => calculate("-1,-2")).toThrow("negative numbers not allowed -1,-2");
+  });
+
+  test('input "-1,2,-3" should return "negative numbers not allowed -1,-3"' , () => {
+    expect(() => calculate("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
+  });
+
+  test('Numbers bigger than 1000 should be ignored' , () => {
+    expect(calculate("2,1000")).toBe(2);
+  });
+});
+
+
+describe('\nEdge cases',() => {
   test('input ",,," should return 0' , () => {
     expect(calculate(",,,")).toBe(0);
   });
@@ -50,18 +81,6 @@ describe('Main calculator Functionality', () => {
     expect(calculate(" ,asdf, ,a")).toBe(NaN);
   });
 
-  test('input "1\\n2,3" should return 6' , () => {
-    expect(calculate("1\n2,3")).toBe(6);
-  });
-
-  test('input "1\\n2,3\\n4" should return 10' , () => {
-    expect(calculate("1\n2,3\n4")).toBe(10);
-  });
-
-  test('input "//;\\n1;2" where the delimiter is ";" should return 3' , () => {
-    expect(calculate("//;\n1;2")).toBe(3);
-  });
-
   test('input "//;" where the delimiter is ";" but the string is empty should return 0' , () => {
     expect(calculate("//;")).toBe(0);
   });
@@ -73,21 +92,4 @@ describe('Main calculator Functionality', () => {
   test('input "/" where the input is an non-numeric character should return NaN' , () => {
     expect(calculate("/")).toBe(NaN);
   });
-
-  test('input "-1" should return negative numbers not allowed -1' , () => {
-    expect(() => calculate("-1")).toThrow("negative numbers not allowed -1");
-  });
-
-  test('input "-1,-2" should return negative numbers not allowed -1,-2' , () => {
-    expect(() => calculate("-1,-2")).toThrow("negative numbers not allowed -1,-2");
-  });
-
-  test('input "-1,2,-3" should return negative numbers not allowed -1,-3' , () => {
-    expect(() => calculate("-1,2,-3")).toThrow("negative numbers not allowed -1,-3");
-  });
-
-  test('Numbers bigger than 1000 should be ignored' , () => {
-    expect(calculate("2,1000")).toBe(2);
-  });
 });
-
